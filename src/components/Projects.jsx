@@ -77,7 +77,7 @@ export default function Projects() {
 
                 {/* Screenshot with zoom + parallax */}
                 <div
-                  className="w-full project-img-responsive overflow-hidden"
+                  className="w-full project-img-responsive overflow-hidden h-48 md:h-56 lg:h-64"
                   onMouseMove={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();
                     const x =
@@ -94,6 +94,7 @@ export default function Projects() {
                     src={proj.image}
                     alt={`${proj.title} screenshot`}
                     className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
+                    loading="lazy"
                   />
                 </div>
               </div>

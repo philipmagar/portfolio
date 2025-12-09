@@ -92,7 +92,7 @@ export default function ContactFooter() {
           <p>© {new Date().getFullYear()} PhilipMagar — All Rights Reserved</p>
 
           {/* Right Side - Social Icons */}
-          <div className="flex items-center gap-6 mt-4 md:mt-0">
+            <div className="flex items-center gap-4 mt-4 md:mt-0">
             {[ 
               { icon: <FaLinkedin size={22} />, link: "https://linkedin.com" },
               { icon: <FaGithub size={22} />, link: "https://github.com" },
@@ -103,7 +103,7 @@ export default function ContactFooter() {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 flex items-center justify-center rounded-full backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:scale-110 transition hover:bg-[#B7E3A3]/10 hover:border-[#B7E3A3] hover:text-[#B7E3A3]"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:scale-110 transition hover:bg-[#B7E3A3]/10 hover:border-[#B7E3A3] hover:text-[#B7E3A3]"
               >
                 {item.icon}
               </a>
@@ -118,7 +118,7 @@ export default function ContactFooter() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 shadow-xl hover:bg-[#B7E3A3]/10 hover:border-[#B7E3A3] hover:text-[#B7E3A3] cursor-pointer transition text-white"
+        className="fixed bottom-6 right-6 w-10 h-10 sm:bottom-8 sm:right-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 shadow-xl hover:bg-[#B7E3A3]/10 hover:border-[#B7E3A3] hover:text-[#B7E3A3] cursor-pointer transition text-white"
       >
         <HiArrowUp size={24} />
       </motion.a>

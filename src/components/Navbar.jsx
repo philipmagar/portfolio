@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { ScrollSpyContext } from "./ScrollSpyContext";
 import { motion } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const { active } = useContext(ScrollSpyContext);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
     { id: "about", label: "About" },
@@ -46,7 +48,8 @@ export default function Navbar() {
           Philip_mgr
         </h1>
 
-        <div className="flex gap-8 ml-auto items-center">
+        {/* desktop links */}
+        <div className="hidden md:flex gap-8 ml-auto items-center">
           {links.map((l) => (
             <motion.a
               key={l.id}
@@ -67,7 +70,37 @@ export default function Navbar() {
             </motion.a>
           ))}
         </div>
+
+        {/* mobile menu button */}
+        <div className="md:hidden ml-4">
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((s) => !s)}
+            className="rounded-md p-2 text-white/90 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B7E3A3]"
+          >
+            {mobileOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu overlay */}
+      {mobileOpen && (
+        <div className="md:hidden w-full bg-[#0f0f0f]/90 backdrop-blur-sm absolute left-0 top-full z-40">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
+            {links.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                onClick={() => setMobileOpen(false)}
+                className="block text-lg text-gray-200 py-2 px-3 rounded-md hover:bg-white/5"
+                style={{ textDecoration: "none" }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </motion.nav>
   );
 }

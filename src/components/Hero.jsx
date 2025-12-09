@@ -64,7 +64,7 @@ export default function Hero() {
           <img
             src={profile}
             alt="profile"
-            className="w-64 h-64 md:w-72 md:h-72 rounded-full shadow-2xl object-cover"
+            className="w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full shadow-2xl object-cover"
           />
         </motion.div>
       </div>
