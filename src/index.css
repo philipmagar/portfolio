@@ -1,0 +1,54 @@
+/* -------------------------------
+   1️⃣ Google Fonts Import
+--------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+/* -------------------------------
+   2️⃣ Tailwind Directives
+--------------------------------- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------
+   3️⃣ Global Styles
+--------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #111111; /* optional dark background */
+  color: #fff;
+}
+
+a:focus,
+a:active {
+  outline: none;
+  border: none;
+}
+
+* {
+  scroll-behavior: smooth; /* optional extra smooth scrolling */
+}
+
+/* -------------------------------
+   4️⃣ Optional Utility Classes
+--------------------------------- */
+.text-glow {
+  text-shadow: 0 0 8px #B7E3A3;
+}
+
+.bg-glass {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
