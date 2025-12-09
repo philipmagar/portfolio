@@ -49,7 +49,7 @@ export default function ContactFooter() {
         className="w-full max-w-2xl flex flex-col gap-6"
         onSubmit={(e) => {
           e.preventDefault();
-          alert("Thank you! Your message has been sent.");
+          alert("Thank you! Your menssage has been sent.");
         }}
       >
         <input
