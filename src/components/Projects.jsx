@@ -10,7 +10,7 @@ const projects = [
     tech: "React, Node.js, Express, MongoDB",
     image: "/images/ecommerce.png",
     live: "https://your-ecommerce-live-link.com",
-    github: "https://github.com/yourusername/ecommerce-app",
+    github: "https://github.com/philipmagar/electronics.git",
   },
   {
     title: "Event Management System",
