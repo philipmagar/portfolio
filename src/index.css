@@ -10,9 +10,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* -------------------------------
-   3️⃣ Global Styles
---------------------------------- */
+@layer base {
+  :root {
+    --color-primary: #15803d; /* Dark Green for Light Mode */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f3f4f6;
+    --color-text-primary: #111827;
+    --color-text-secondary: #374151;
+    --color-border: #e5e7eb;
+  }
+
+  .dark {
+    --color-primary: #B7E3A3; /* Light Green for Dark Mode */
+    --color-bg-primary: #0f172a; /* Slate 900 */
+    --color-bg-secondary: #1e293b; /* Slate 800 */
+    --color-text-primary: #f3f4f6;
+    --color-text-secondary: #9ca3af;
+    --color-border: #374151;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -21,8 +38,9 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: #111111; /* optional dark background */
-  color: #fff;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 a:focus,

@@ -52,14 +52,13 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="min-h-screen px-6 py-24 font-poppins"
-      style={{ background: "linear-gradient(135deg, #1a1a1a, #111111)" }}
+      className="min-h-screen px-6 py-24 font-poppins bg-background transition-colors duration-300"
     >
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12"
+        className="text-4xl md:text-5xl font-extrabold text-text text-center mb-12"
       >
         Skills
       </motion.h2>
@@ -71,25 +70,25 @@ export default function Skills() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: idx * 0.2 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 25px #B7E3A3" }}
-            className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 flex flex-col items-center shadow-lg cursor-pointer transition"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 25px var(--color-primary)" }}
+            className="bg-surface backdrop-blur-md border border-border rounded-2xl p-6 flex flex-col items-center shadow-lg cursor-pointer transition"
           >
             <motion.div
               animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.05, 1, 1] }}
-              whileHover={{ scale: 1.2, textShadow: "0 0 15px #B7E3A3" }}
+              whileHover={{ scale: 1.2, textShadow: "0 0 15px var(--color-primary)" }}
               transition={{ repeat: Infinity, duration: 4, repeatDelay: 1 }}
               className="text-4xl mb-4"
             >
               {cat.icon}
             </motion.div>
 
-            <h3 className="text-xl font-semibold text-white mb-4">{cat.title}</h3>
+            <h3 className="text-xl font-semibold text-text mb-4">{cat.title}</h3>
 
-            <ul className="text-gray-300 flex flex-col gap-2 text-center">
+            <ul className="text-text-muted flex flex-col gap-2 text-center">
               {cat.skills.map((skill, i) => (
                 <li
                   key={i}
-                  className="hover:text-[#B7E3A3] transition duration-300"
+                  className="hover:text-primary transition duration-300"
                 >
                   {skill}
                 </li>

@@ -36,11 +36,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-screen flex flex-col justify-center px-6 py-24 font-poppins"
-      style={{
-        background: "linear-gradient(135deg, #1a1a1a, #111111)",
-        margin: 0,
-      }}
+      className="min-h-screen flex flex-col justify-center px-6 py-24 font-poppins bg-background transition-colors duration-300"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -48,11 +44,11 @@ export default function Projects() {
         transition={{ duration: 0.8 }}
         className="max-w-6xl mx-auto text-center md:text-left"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-text mb-4">
           Projects
         </h2>
 
-        <p className="text-gray-400 text-lg mb-12">
+        <p className="text-text-muted text-lg mb-12">
           Explore some of my recent projects, including screenshots and GitHub
           repositories.
         </p>
@@ -64,16 +60,16 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 0 25px #B7E3A3" }}
-              className="relative p-6 rounded-2xl border border-white/20 bg-white/5 cursor-pointer flex flex-col items-center shadow-lg transition"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 25px var(--color-primary)" }}
+              className="relative p-6 rounded-2xl border border-border bg-surface cursor-pointer flex flex-col items-center shadow-lg transition"
             >
               {/* Screenshot Card */}
               <div className="relative w-full mb-4 rounded-xl overflow-hidden group border border-white/10">
                 {/* Animated gradient border */}
-                <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-[#B7E3A3] via-transparent to-[#B7E3A3] opacity-40 animate-gradientMove pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-primary via-transparent to-primary opacity-40 animate-gradientMove pointer-events-none"></div>
 
                 {/* Soft glow layer */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-40 transition duration-500 blur-xl bg-[#B7E3A3] pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-40 transition duration-500 blur-xl bg-primary pointer-events-none"></div>
 
                 {/* Screenshot with zoom + parallax */}
                 <div
@@ -100,14 +96,14 @@ export default function Projects() {
               </div>
 
               {/* Text Content */}
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-text mb-2">
                 {proj.title}
               </h3>
 
-              <p className="text-gray-300 mb-2">{proj.description}</p>
+              <p className="text-text-muted mb-2">{proj.description}</p>
 
               {/* Plain tech/tools text */}
-              <p className="text-gray-400 text-sm mb-4">{proj.tech}</p>
+              <p className="text-text-muted text-sm mb-4">{proj.tech}</p>
 
               {/* Links */}
               <div className="flex gap-4 mt-auto">
@@ -116,7 +112,7 @@ export default function Projects() {
                     href={proj.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-[#B7E3A3] hover:text-white transition font-medium"
+                    className="flex items-center gap-2 text-primary hover:text-text transition font-medium"
                   >
                     Live Demo <FaExternalLinkAlt />
                   </a>
@@ -127,7 +123,7 @@ export default function Projects() {
                     href={proj.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-[#B7E3A3] hover:text-white transition font-medium"
+                    className="flex items-center gap-2 text-primary hover:text-text transition font-medium"
                   >
                     GitHub <FaGithub />
                   </a>

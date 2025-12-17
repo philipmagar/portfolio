@@ -5,11 +5,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-6 py-24 font-poppins"
-      style={{
-        background: "linear-gradient(135deg, #1a1a1a, #111111)",
-        margin: 0,
-      }}
+      className="min-h-screen flex items-center justify-center px-6 py-24 font-poppins bg-background"
     >
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start md:justify-between gap-10">
         {/* Left side - Text */}
@@ -18,17 +14,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight"
+            className="text-5xl md:text-6xl font-extrabold text-text mb-4 leading-tight"
           >
-            Hello,<br />
-            I’m <span className="text-[#B7E3A3]">Full Stack Developer</span>
+            Hello,
+            I’m <span className="text-primary dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-[#B7E3A3] dark:to-[#4ade80] animate-pulse">Philip</span>
+            <br />
+            fullstack developer
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 max-w-xl mb-8 text-lg md:text-xl"
+            className="text-text-muted max-w-xl mb-8 text-lg md:text-xl"
           >
             I build modern web applications from database to user interface. Specialized in React, Node.js, and scalable cloud architecture.
           </motion.p>
@@ -41,13 +39,13 @@ export default function Hero() {
           >
             <a
               href="#about"
-              className="px-6 py-3 rounded-full border border-white/20 text-gray-200 hover:bg-white/5 transition"
+              className="px-6 py-3 rounded-full border border-text-muted hover:border-primary text-text hover:text-primary hover:bg-surface transition"
             >
               About Me
             </a>
             <a
               href="#projects"
-              className="px-6 py-3 rounded-full border border-white/20 text-gray-200 hover:bg-white/5 transition"
+              className="px-6 py-3 rounded-full border border-text-muted hover:border-primary text-text hover:text-primary hover:bg-surface transition"
             >
               View Projects
             </a>

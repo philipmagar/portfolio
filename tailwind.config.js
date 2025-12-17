@@ -6,9 +6,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#3F1D38",
-        secondary: "#D89279",
-        accent: "#F7C5A0",
+        primary: "var(--color-primary)",
+        background: "var(--color-bg-primary)",
+        surface: "var(--color-bg-secondary)",
+        text: "var(--color-text-primary)",
+        "text-muted": "var(--color-text-secondary)",
+        border: "var(--color-border)",
       },
     },
   },

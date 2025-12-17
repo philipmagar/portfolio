@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { ScrollSpyContext } from "./ScrollSpyContext";
-import { motion } from "framer-motion";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import { useTheme } from "./ThemeContext";
 
 export default function Navbar() {
   const { active } = useContext(ScrollSpyContext);
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -12,7 +14,7 @@ export default function Navbar() {
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
-    { id: "contact", label: "Contact" },
+    { id: "contact", label: "Contacts" },
   ];
 
   useEffect(() => {
@@ -28,24 +30,21 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className={`sticky top-0 left-0 w-full z-50 font-poppins transition-all duration-300`}
-      style={{
-        background: "linear-gradient(135deg, #1a1a1a, #111111)",
-        boxShadow: scrolled ? "0 2px 12px rgba(183, 227, 163, 0.3)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(183, 227, 163, 0.4)" : "none",
-      }}
+      className={`sticky top-0 left-0 w-full z-50 font-poppins transition-all duration-300 ${scrolled
+        ? "bg-background/90 backdrop-blur-md shadow-lg border-b border-border"
+        : "bg-transparent"
+        }`}
     >
       <div
-        className={`max-w-6xl mx-auto flex justify-between items-center px-6 transition-all duration-300 ${
-          scrolled ? "py-1.5" : "py-4"
-        }`}
+        className={`max-w-6xl mx-auto flex justify-between items-center px-6 transition-all duration-300 ${scrolled ? "py-1.5" : "py-4"
+          }`}
       >
         <h1
-          className="font-bold text-white cursor-pointer transition-all duration-300"
-          style={{ fontSize: scrolled ? "1.5rem" : "2rem" }}
+          className={`font-bold cursor-pointer transition-all duration-300 ${scrolled ? "text-2xl" : "text-3xl"
+            } text-text`}
           onClick={() => window.location.reload()}
         >
-          Philip_mgr
+          फिलिप
         </h1>
 
         {/* desktop links */}
@@ -54,21 +53,25 @@ export default function Navbar() {
             <motion.a
               key={l.id}
               href={`#${l.id}`}
-              className="transition-transform text-lg md:text-xl"
-              style={{
-                color: active === l.id ? "#B7E3A3" : "white",
-                textDecoration: "none",
-                textShadow:
-                  active === l.id
-                    ? "0 0 8px #B7E3A3, 0 0 12px #B7E3A3"
-                    : "none",
-              }}
+              className={`transition-colors text-lg font-medium ${active === l.id
+                ? "text-primary"
+                : "text-text-muted hover:text-primary"
+                }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               {l.label}
             </motion.a>
           ))}
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full bg-surface text-text hover:text-primary transition-colors"
+            aria-label="Toggle Theme"
+          >
+            {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
         </div>
 
         {/* mobile menu button */}
@@ -84,23 +87,42 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu overlay */}
-      {mobileOpen && (
-        <div className="md:hidden w-full bg-[#0f0f0f]/90 backdrop-blur-sm absolute left-0 top-full z-40">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
-            {links.map((l) => (
-              <a
-                key={l.id}
-                href={`#${l.id}`}
-                onClick={() => setMobileOpen(false)}
-                className="block text-lg text-gray-200 py-2 px-3 rounded-md hover:bg-white/5"
-                style={{ textDecoration: "none" }}
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden w-full bg-background/95 backdrop-blur-sm border-b border-border"
+          >
+            <div className="flex flex-col p-4 gap-4">
+              {links.map((l) => (
+                <a
+                  key={l.id}
+                  href={`#${l.id}`}
+                  onClick={() => setMobileOpen(false)}
+                  className={`block text-lg font-medium py-2 px-3 rounded-md ${active === l.id
+                    ? "text-primary bg-surface"
+                    : "text-text-muted hover:bg-surface"
+                    }`}
+                >
+                  {l.label}
+                </a>
+              ))}
+
+              <div className="flex items-center justify-between px-3 py-2 border-t border-border mt-2">
+                <span className="text-text-muted">Switch Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full bg-surface text-text hover:text-primary transition-colors"
+                >
+                  {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
